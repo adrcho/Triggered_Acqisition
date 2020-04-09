@@ -24,13 +24,13 @@ REVISION ?= devbuild
 
 # old def de SRCS et OBJS
 # List of compiled object files (not yet linked to executable)
-OBJS = trigger.o fpga_osc.o rp.o# main_osc.o worker.o
+#OBJS = trigger.o fpga_osc.o# main_osc.o worker.o
 # List of raw source files (all object files, renamed from .o to .c)
-SRCS = $(subst .o,.c, $(OBJS)))
+#SRCS = $(subst .o,.c, $(OBJS)))
 
 # new def
-#SRCS=$(wildcard *.c)
-#OBJS=$(SRCS:.c=)
+SRCS=$(wildcard *.c)
+OBJS=$(SRCS:.c=)
 
 # Executable name
 TARGET=trig
