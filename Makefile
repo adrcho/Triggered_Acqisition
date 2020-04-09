@@ -33,6 +33,8 @@ TARGET=trig
 CFLAGS=-g -std=gnu99 -Wall -Werror
 CFLAGS += -DVERSION=$(VERSION) -DREVISION=$(REVISION)
 CFLAGS += -I/opt/redpitaya/include
+LDFLAGS = -L/opt/redpitaya/lib
+LDLIBS = -lm -lpthread -lrp
 
 # Red Pitaya common SW directory
 SHARED=../../shared/
