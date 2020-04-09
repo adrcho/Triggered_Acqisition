@@ -31,9 +31,7 @@ TARGET=trig
 
 # GCC compiling & linking flags
 CFLAGS=-g -std=gnu99 -Wall -Werror
-CFLAGS += -I/opt/redpitaya/include
-LDFLAGS = -L/opt/redpitaya/lib
-CFLAGS += -DVERSION=$(VERSION) -DREVISION=$(REVISION)
+CFLAGS += -DVERSION=$(VERSION) -DREVISION=$(REVISION)  -I/opt/redpitaya/include
 
 
 # Red Pitaya common SW directory
