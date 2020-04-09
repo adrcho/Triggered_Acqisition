@@ -19,9 +19,8 @@
 #include <stddef.h>
 #include <sys/param.h>
 #include "fpga_osc.h"
-#include "fpga_osc.c
+#include "fpga_osc.c"
 
-"
 #include "redpitaya/rp.h"
 
 
