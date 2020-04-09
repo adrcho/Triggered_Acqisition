@@ -21,7 +21,7 @@
 #include "fpga_osc.h"
 
 #include "redpitaya/rp.h"
-#define M_PI 3.14159265358979323846
+
 
 int unsigned led0=0;
 int unsigned led1=1;
