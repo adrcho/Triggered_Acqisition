@@ -179,12 +179,12 @@ int main(void)
  	osc_fpga_exit();
 	
 	
-	rp_DpinSetState(led2, RP_High);
+	rp_DpinSetState(led2, RP_HIGH);
 	rp_GenOutDisable(RP_CH_1);
 	rp_GenOutDisable(RP_CH_2);
+	rp_DpinSetState(led0, RP_LOW);
 	rp_DpinSetState(led1, RP_LOW);
 	rp_DpinSetState(led2, RP_LOW);
-	rp_DpinSetState(led3, RP_LOW);
 	rp_Release();
 	
 	
