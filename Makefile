@@ -30,7 +30,7 @@ REVISION ?= devbuild
 
 # new def
 SRCS=$(wildcard *.c)
-OBJS=$(SRCS:.c=)
+OBJS=$(SRCS:.c=.o)
 
 # Executable name
 TARGET=trig
