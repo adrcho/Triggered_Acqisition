@@ -20,9 +20,17 @@
 #include <sys/param.h>
 #include "fpga_osc.h"
 
+#include "redpitaya/rp.h"
+#define M_PI 3.14159265358979323846
+
+int unsigned led0=0;
+int unsigned led1=1;
+int unsigned led2=2;
+
+
 //Buffer depth 
 const int BUF = 16*1024;
-const int N = 12; 			// desired length of trace (1,..., 16383)
+const int N = 3; 			// desired length of trace (1,..., 16383)
 const int decimation = 1; 	// decimation: [1;8;64;1024;8192;65536]
 
 int main(void) 
@@ -51,7 +59,63 @@ int main(void)
 	int trig_test;			// trigger test checks if writing the trace has completed yet
 	int trigger_voltage= 0; // enter trigger voltage in [V] as parameter [1V...~600 RP units]
 	g_osc_fpga_reg_mem->cha_thr = osc_fpga_cnv_v_to_cnt(trigger_voltage); //sets trigger voltage
+	
+	
+	
+	
+	// Initialization of API
+	 if (rp_Init() != RP_OK) {
+        fprintf(stderr, "Red Pitaya API init failed!\n");
+        return EXIT_FAILURE;
+    	}
+	
+	rp_DpinSetState(led0, RP_LOW);
+	rp_DpinSetState(led1, RP_LOW);
+	rp_DpinSetState(led2, RP_LOW);
+	
+	
+	
+	
+	// define initial parameters for trigger signal
+	int trig_sig_freq=1000;     // generation of a trigger signal
+	int trig_sig_amp=1;
 
+	/******************************/
+	/** Set emission for trigger **/
+	/******************************/
+	
+	/* Generating frequency */
+	rp_GenFreq(RP_CH_1,trig_sig_freq);
+	/* Generating amplitude */
+	rp_GenAmp(RP_CH_1, trig_sig_amp);
+	/* Generating wave form */
+	rp_GenWaveform(RP_CH_1, RP_WAVEFORM_SINE);
+	/* Enable channel */
+	rp_GenOutEnable(RP_CH_1);
+	
+	rp_DpinSetState(led0, RP_HIGH);
+	
+	// define initial parameters for test signal
+	int test_sig_freq=1000;     // generation of a trigger signal
+	int test_sig_amp=0.5;
+	
+	/**********************************/
+	/** Set emission for test signal **/
+	/**********************************/
+	
+	/* Generating frequency */
+	rp_GenFreq(RP_CH_2,test_sig_freq);
+	/* Generating amplitude */
+	rp_GenAmp(RP_CH_2, test_sig_amp);
+	/* Generating wave form */
+	rp_GenWaveform(RP_CH_2, RP_WAVEFORM_SINE);
+	/* Enable channel */
+	rp_GenOutEnable(RP_CH_2);
+	
+	rp_DpinSetState(led1, RP_HIGH);
+	
+	
+	
 	/***************************/
 	/** MAIN ACQUISITION LOOP **/
 	/***************************/
@@ -109,9 +173,21 @@ int main(void)
 	    fprintf(fp, "\n");
 
 	}
-
+	
 	// cleaning up all nice like mommy taught me
 	fclose(fp);
-    osc_fpga_exit();
+ 	osc_fpga_exit();
+	
+	
+	rp_DpinSetState(led2, RP_High);
+	rp_GenOutDisable(RP_CH_1);
+	rp_GenOutDisable(RP_CH_2);
+	rp_DpinSetState(led1, RP_LOW);
+	rp_DpinSetState(led2, RP_LOW);
+	rp_DpinSetState(led3, RP_LOW);
+	rp_Release();
+	
+	
+	
 	return 0;
 }
