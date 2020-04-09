@@ -25,7 +25,9 @@ REVISION ?= devbuild
 OBJS = trigger.o fpga_osc.o# main_osc.o worker.o
 # List of raw source files (all object files, renamed from .o to .c)
 SRCS = $(subst .o,.c, $(OBJS)))
+
 SRCS=$(wildcard *.c)
+OBJS=$(SRCS:.c=)
 
 # Executable name
 TARGET=trig
