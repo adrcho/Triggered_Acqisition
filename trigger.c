@@ -20,7 +20,7 @@
 #include <sys/param.h>
 #include "fpga_osc.h"
 
-#include "redpitaya/rp.h"
+#include "rp.h"
 
 
 int unsigned led0=0;
