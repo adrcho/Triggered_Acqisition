@@ -47,7 +47,7 @@ SHARED=../../shared/
 
 # Additional libraries which needs to be dynamically linked to the executable
 # -lm - System math library (used by cos(), sin(), sqrt(), ... functions)
-LIBS=-lm -lpthread -lrp -l:librp.a
+LIBS=-lm -lpthread -l:librp.a
 
 
 
