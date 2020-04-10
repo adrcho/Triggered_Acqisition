@@ -201,7 +201,7 @@ int main(void)
 	
 	
 	
-	end_t=clock()
+	end_t=clock();
 	// cleaning up all nice like mommy taught me
 	fclose(fp);
  	osc_fpga_exit();
