@@ -130,7 +130,7 @@ int main(void)
 	/***************************/
 	for (trace_counts=0; trace_counts<10; trace_counts++)
 	{
-		loop_t1=clock()
+		loop_t1=clock();
 		/*Set trigger, begin acquisition when condition is met*/
 		osc_fpga_arm_trigger(); //start acquiring, incrementing write pointer
 		osc_fpga_set_trigger(0x2); // where do you want your triggering from?
@@ -184,7 +184,7 @@ int main(void)
 	   }
 	    
 		
-	    loop_t2=clock()
+	    loop_t2=clock();
 	    loop_t = (double)(loop_t2 - loop_t1) / CLOCKS_PER_SEC;
 	    printf("Total ellapsed time %ld" ,loop_t);
 
