@@ -38,7 +38,7 @@ TARGET=trig
 # GCC compiling & linking flags
 CFLAGS=-g -std=gnu99 -Wall -Werror
 CFLAGS += -DVERSION=$(VERSION) -DREVISION=$(REVISION)
-CFLAGS += -I/opt/redpitaya/include -L/opt/redpitaya/lib
+CFLAGS += -I/opt/redpitaya/include -L/opt/redpitaya/lib -L/lib
 
 
 
