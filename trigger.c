@@ -185,8 +185,8 @@ int main(void)
 	    
 		
 	    loop_t2=clock();
-	    loop_t = (long double)((long double)(loop_t2 - loop_t1)/ CLOCKS_PER_SEC);
-	    printf("Ellapsed time %ld \n" ,loop_t);
+	    loop_t = (long double)(loop_t2 - loop_t1);
+	    printf("Ellapsed time %ld clock cycles\n" ,loop_t);
 
 
 	    rp_DpinSetState(led2, RP_HIGH);
@@ -205,9 +205,9 @@ int main(void)
 	// cleaning up all nice like mommy taught me
 	fclose(fp);
  	osc_fpga_exit();
-	total_t = (long double)((long double)(end_t - start_t)/CLOCKS_PER_SEC);
-	printf("Total ellapsed time %ld \n" ,total_t);
-	
+	total_t = (long double)(end_t - start_t);
+	printf("Total ellapsed time %ld clock cycles\n" ,total_t);
+	printf("%ld Clock cycles per sec\n" ,CLOCKS_PER_SEC);
 	
 	rp_GenOutDisable(RP_CH_1);
 	rp_GenOutDisable(RP_CH_2);
