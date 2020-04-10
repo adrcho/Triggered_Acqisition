@@ -11,6 +11,7 @@
  */
 
 #include <math.h>
+#include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -41,6 +42,7 @@ const int N= 12500;			// desired length of trace (1,..., 16383) for 100us record
 
 int main(void) 
 {
+	clock_t start_t, loop_t, loop_t1, loop_t2, end_t, total_t;
 	printf("%i ",N);
 	// initialization
 	int start = osc_fpga_init(); 
@@ -122,71 +124,89 @@ int main(void)
 	rp_DpinSetState(led1, RP_HIGH);
 	
 	
-	
+	start_t= clock();
 	/***************************/
 	/** MAIN ACQUISITION LOOP **/
 	/***************************/
 	for (trace_counts=0; trace_counts<10; trace_counts++)
 	{
+		loop_t1=clock()
 		/*Set trigger, begin acquisition when condition is met*/
 		osc_fpga_arm_trigger(); //start acquiring, incrementing write pointer
 		osc_fpga_set_trigger(0x2); // where do you want your triggering from?
 	 	/*    0 - end of acquisition/no acquisition
 	 	*     1 - trig immediately
-     	*     2 - ChA positive edge 
-     	*     3 - ChA negative edge
-     	*     4 - ChB positive edge 
-     	*     5 - ChB negative edge
-     	*     6 - External trigger 0
-     	*     7 - External trigger 1*/
-	 	// Trigger always changes to 0 after acquisition is completed, write pointer stops incrementing
-	 	//->fpga.osc.h l66
+		*     2 - ChA positive edge 
+		*     3 - ChA negative edge
+		*     4 - ChB positive edge 
+		*     5 - ChB negative edge
+		*     6 - External trigger 0
+		*     7 - External trigger 1*/
+			// Trigger always changes to 0 after acquisition is completed, write pointer stops incrementing
+			//->fpga.osc.h l66
 
 
-	    /*Wait for the acquisition to finish = trigger is set to 0*/
-     	trig_test=(g_osc_fpga_reg_mem->trig_source); // it gets the above trigger value
-     	// if acquistion is not yet completed it should return the number you set above and 0 otherwise
-     	while (trig_test!=0) // with this loop the program waits until the acquistion is completed before cont.
-     	{
-     		trig_test=(g_osc_fpga_reg_mem->trig_source);
-     	}
-     	//->fpga_osc.c l366
-	rp_DpinSetState(led2, RP_HIGH);
+		    /*Wait for the acquisition to finish = trigger is set to 0*/
+		trig_test=(g_osc_fpga_reg_mem->trig_source); // it gets the above trigger value
+		// if acquistion is not yet completed it should return the number you set above and 0 otherwise
+		while (trig_test!=0) // with this loop the program waits until the acquistion is completed before cont.
+		{
+			trig_test=(g_osc_fpga_reg_mem->trig_source);
+		}
+		//->fpga_osc.c l366
+		rp_DpinSetState(led2, RP_HIGH);
 
 	    trig_ptr = g_osc_fpga_reg_mem->wr_ptr_trigger; // get pointer to mem. adress where trigger was met
 	    //->fpga_osc.c l283
 	    osc_fpga_get_sig_ptr(&cha_signal, &chb_signal); 
- 	    //->fpga_osc.c l378
+	    //->fpga_osc.c l378
 
-	    
+		
+		
+		
 	    /*now read N samples from the trigger pointer location.*/
 	    int i;
 	    int ptr;
-	    for (i=0; i < N; i++) {
-	        ptr = (trig_ptr+i)%BUF;
+	    for (i=0; i < N; i++)
+	    {
+		ptr = (trig_ptr+i)%BUF;
 
-        	if (cha_signal[ptr]>=8192) // properly display negative values fix
-        	{
-        		//printf("%d ",cha_signal[ptr]-16384);
-        		fprintf(fp, "%d ", cha_signal[ptr]-16384);
-        	}
-        	else
-        	{
-        		//printf("%d ",cha_signal[ptr]);
-        		fprintf(fp, "%d ", cha_signal[ptr]);
-        	}  
-	    }
+		if (cha_signal[ptr]>=8192) // properly display negative values fix
+		{
+			//printf("%d ",cha_signal[ptr]-16384);
+			fprintf(fp, "%d ", cha_signal[ptr]-16384);
+		}
+		else
+		{
+			//printf("%d ",cha_signal[ptr]);
+			fprintf(fp, "%d ", cha_signal[ptr]);
+		}  
+	   }
+	    
+		
+	    loop_t2=clock()
+	    loop_t = (double)(loop_t2 - loop_t1) / CLOCKS_PER_SEC;
+	    printf("Total ellapsed time %ld" ,loop_t);
+
+
 	    rp_DpinSetState(led2, RP_HIGH);
-	    printf("Sample %i recorded o\n",trace_counts);
+	    printf("Sample %i recorded\n",trace_counts);
 	    //printf("\n");
 	    fprintf(fp, "\n");
-
+		
+		
+		
+	    
 	}
 	
+	
+	
+	end_t=clock()
 	// cleaning up all nice like mommy taught me
 	fclose(fp);
  	osc_fpga_exit();
-	
+	total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC;
+	printf("Total ellapsed time %ld" ,total_t);
 	
 	
 	rp_GenOutDisable(RP_CH_1);
