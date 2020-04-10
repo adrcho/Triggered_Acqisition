@@ -185,7 +185,7 @@ int main(void)
 	    
 		
 	    loop_t2=clock();
-	    loop_t = (double)(loop_t2 - loop_t1);
+	    loop_t = (float)((float)(loop_t2 - loop_t1)/ CLOCKS_PER_SEC);
 	    printf("Ellapsed time %ld \n" ,loop_t);
 
 
@@ -205,7 +205,7 @@ int main(void)
 	// cleaning up all nice like mommy taught me
 	fclose(fp);
  	osc_fpga_exit();
-	total_t = (double)(end_t - start_t);
+	total_t = (float)((float)(end_t - start_t)/CLOCKS_PER_SEC);
 	printf("Total ellapsed time %ld \n" ,total_t);
 	
 	
