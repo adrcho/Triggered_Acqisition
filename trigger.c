@@ -32,13 +32,12 @@ int unsigned led2=2;
 
 
 
-const double full_sweep_time=100e-6; //s  <125us*
+double full_sweep_time=100e-6; //s  <125us*
 //Buffer depth 
 
 const int BUF = 16*1024;
 const int decimation = 1;    // decimation: [1;8;64;1024;8192;65536]
-int test = full_sweep_time*125e6/decimation; 
-const int N = test;			// desired length of trace (1,..., 16383)
+int N = full_sweep_time*125e6/decimation;			// desired length of trace (1,..., 16383)
 	// decimation: [1;8;64;1024;8192;65536]
 
 int main(void) 
