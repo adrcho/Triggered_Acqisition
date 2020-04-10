@@ -42,7 +42,7 @@ int N = full_sweep_time*125e6/decimation;			// desired length of trace (1,..., 1
 
 int main(void) 
 {
-	printf("%f ",N);
+	printf("%i ",N);
 	// initialization
 	int start = osc_fpga_init(); 
 	if(start) {
