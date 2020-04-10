@@ -38,16 +38,16 @@ TARGET=trig
 # GCC compiling & linking flags
 CFLAGS=-g -std=gnu99 -Wall -Werror
 CFLAGS += -DVERSION=$(VERSION) -DREVISION=$(REVISION)
-CFLAGS += -I/opt/redpitaya/include
-LDFLAGS = -L/opt/redpitaya/lib
-LDLIBS = -lm -lpthread -lrp
+CFLAGS += -I/opt/redpitaya/include -L/opt/redpitaya/lib
+
+
 
 # Red Pitaya common SW directory
 SHARED=../../shared/
 
 # Additional libraries which needs to be dynamically linked to the executable
 # -lm - System math library (used by cos(), sin(), sqrt(), ... functions)
-LIBS=-lm -lpthread
+LIBS=-lm -lpthread -lrp
 
 
 
