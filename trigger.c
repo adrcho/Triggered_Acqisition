@@ -205,7 +205,7 @@ int main(void)
 	// cleaning up all nice like mommy taught me
 	fclose(fp);
  	osc_fpga_exit();
-	total_t = (long double)((longdouble)(end_t - start_t)/CLOCKS_PER_SEC);
+	total_t = (long double)((long double)(end_t - start_t)/CLOCKS_PER_SEC);
 	printf("Total ellapsed time %ld \n" ,total_t);
 	
 	
