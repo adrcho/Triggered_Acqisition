@@ -128,7 +128,7 @@ int main(void)
 	/***************************/
 	/** MAIN ACQUISITION LOOP **/
 	/***************************/
-	for (trace_counts=0; trace_counts<10; trace_counts++)
+	for (trace_counts=0; trace_counts<100; trace_counts++)
 	{
 		loop_t1=clock();
 		/*Set trigger, begin acquisition when condition is met*/
