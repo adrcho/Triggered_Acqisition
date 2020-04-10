@@ -36,7 +36,7 @@ int unsigned led2=2;
 
 const int BUF = 16*1024;
 const int decimation = 1;    // decimation: [1;8;64;1024;8192;65536]
-double N= 12500;			// desired length of trace (1,..., 16383) for 100us recording 
+const int N= 12500;			// desired length of trace (1,..., 16383) for 100us recording 
 	// decimation: [1;8;64;1024;8192;65536]
 
 int main(void) 
