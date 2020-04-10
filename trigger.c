@@ -151,14 +151,14 @@ int main(void)
      		trig_test=(g_osc_fpga_reg_mem->trig_source);
      	}
      	//->fpga_osc.c l366
-
+	rp_DpinSetState(led2, RP_HIGH);
 
 	    trig_ptr = g_osc_fpga_reg_mem->wr_ptr_trigger; // get pointer to mem. adress where trigger was met
 	    //->fpga_osc.c l283
 	    osc_fpga_get_sig_ptr(&cha_signal, &chb_signal); 
  	    //->fpga_osc.c l378
 
-
+	    
 	    /*now read N samples from the trigger pointer location.*/
 	    int i;
 	    int ptr;
@@ -167,16 +167,18 @@ int main(void)
 
         	if (cha_signal[ptr]>=8192) // properly display negative values fix
         	{
-        		printf("%d ",cha_signal[ptr]-16384);
+        		//printf("%d ",cha_signal[ptr]-16384);
         		fprintf(fp, "%d ", cha_signal[ptr]-16384);
         	}
         	else
         	{
-        		printf("%d ",cha_signal[ptr]);
+        		//printf("%d ",cha_signal[ptr]);
         		fprintf(fp, "%d ", cha_signal[ptr]);
         	}  
 	    }
-	    printf("\n");
+	    rp_DpinSetState(led2, RP_HIGH);
+	    printf("Sample %i recorded o\n",trace_counts);
+	    //printf("\n");
 	    fprintf(fp, "\n");
 
 	}
@@ -186,7 +188,7 @@ int main(void)
  	osc_fpga_exit();
 	
 	
-	rp_DpinSetState(led2, RP_HIGH);
+	
 	rp_GenOutDisable(RP_CH_1);
 	rp_GenOutDisable(RP_CH_2);
 	rp_DpinSetState(led0, RP_LOW);
