@@ -185,13 +185,12 @@ int main(void)
 	    
 		
 	    loop_t2=clock();
-	    loop_t = (float)((float)(loop_t2 - loop_t1)/ CLOCKS_PER_SEC);
+	    loop_t = (long double)((long double)(loop_t2 - loop_t1)/ CLOCKS_PER_SEC);
 	    printf("Ellapsed time %ld \n" ,loop_t);
 
 
 	    rp_DpinSetState(led2, RP_HIGH);
 	    printf("Sample %i recorded\n",trace_counts);
-            printf("%li",CLOCKS_PER_SEC);
 	    //printf("\n");
 	    fprintf(fp, "\n");
 		
@@ -206,7 +205,7 @@ int main(void)
 	// cleaning up all nice like mommy taught me
 	fclose(fp);
  	osc_fpga_exit();
-	total_t = (float)((float)(end_t - start_t)/CLOCKS_PER_SEC);
+	total_t = (long double)((longdouble)(end_t - start_t)/CLOCKS_PER_SEC);
 	printf("Total ellapsed time %ld \n" ,total_t);
 	
 	
