@@ -191,6 +191,7 @@ int main(void)
 
 	    rp_DpinSetState(led2, RP_HIGH);
 	    printf("Sample %i recorded\n",trace_counts);
+            printf("%i",CLOCKS_PER_SEC)
 	    //printf("\n");
 	    fprintf(fp, "\n");
 		
