@@ -248,11 +248,14 @@ int main(void)
 		memcpy(&data[i], &cha_signal[(trig_ptr+i)%BUF], 1*sizeof(int));
 	    }
 	    
-	    for (i=0; i < N; i+=1)
-	    {
-		 fprintf(fp, "%d ", data[i]);
-	    }
+	    //for (i=0; i < N; i+=1)
+	    //{
+		// fprintf(fp, "%d ", data[i]);
+	    //}
 		
+		
+		
+	
 		       
 		       
 		       
