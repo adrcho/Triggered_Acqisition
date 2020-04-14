@@ -188,10 +188,15 @@ int main(void)
 	//	}  
 	//   }
 	    	
+		
+		
+		
+		
 	//----------------------------------------//
 	//-----------No Data processing-----------//
 	//-------------Negative nalues------------//
 	//----------------------------------------//
+		//gain 20% speed
 		
 	//    /*now read N samples from the trigger pointer location.*/
 	//    int i;
