@@ -242,7 +242,7 @@ int main(void)
 			
 	    /*now read N samples from the trigger pointer location.*/
 	    int i;
-	    int data[N]={};  // sure its an int?
+	    int data[N]={0,0};  // sure its an int?
 	    printf("%d", data);
 	    for (i=0; i < N; i+=1)
 	    {
