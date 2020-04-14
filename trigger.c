@@ -193,18 +193,38 @@ int main(void)
 	//-------------Negative nalues------------//
 	//----------------------------------------//
 		
+	//    /*now read N samples from the trigger pointer location.*/
+	//    int i;
+	//    int ptr;
+	//    for (i=0; i < N; i++)
+	//    {
+	//	ptr = (trig_ptr+i)%BUF;
+	//	
+	//	fprintf(fp, "%d ", cha_signal[ptr]);
+ 
+	//    }
+	
+		
+	//----------------------------------------//
+	//-----------No Data processing-----------//
+	//-------------Negative nalues------------//
+	//----------------------------------------//
+	//----------------------------------------//
+	//-------Multiple_values_collection-------//
+	//----------------------------------------//
+		
+			
 	    /*now read N samples from the trigger pointer location.*/
 	    int i;
 	    int ptr;
 	    for (i=0; i < N; i++)
 	    {
-		ptr = (trig_ptr+i)%BUF;
-		
-		fprintf(fp, "%d ", cha_signal[ptr]);
- 
-	   }
-		
+		memcpy(&data[i], &cha_signal[(trig_ptr+i)%BUF], 16*sizeof(int);
+		fprintf(fp, "%d ", &cha_signal[(trig_ptr+i)%BUF]); 
+	    }
 	    
+
+		
 		
 	    loop_t2=clock();
 	    loop_t = (long double)(loop_t2 - loop_t1);
