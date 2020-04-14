@@ -215,21 +215,44 @@ int main(void)
 	//-------------Negative nalues------------//
 	//----------------------------------------//
 	//----------------------------------------//
+	//--------(Single_values_collection-------//
+	//----------------------------------------//
+	// same speed for writing in a file.
+			
+	//    /*now read N samples from the trigger pointer location.*/
+	//    int i;
+	//    for (i=0; i < N; i++)
+	//    {
+	//	fprintf(fp, "%d ", cha_signal[(trig_ptr+i)%BUF]); 
+	//    }
+	    
+		
+		
+		
+		
+
+	//----------------------------------------//
+	//-----------No Data processing-----------//
+	//-------------Negative nalues------------//
+	//----------------------------------------//
+	//----------------------------------------//
 	//-------Multiple_values_collection-------//
 	//----------------------------------------//
-		
+	// same speed for writing in a file.
 			
 	    /*now read N samples from the trigger pointer location.*/
 	    int i;
-	    for (i=0; i < N; i++)
+	    int data;
+	    for (i=0; i < N; i+=16)
 	    {
-		//memcpy(&data[i], &cha_signal[(trig_ptr+i)%BUF], 16*sizeof(int);
-		fprintf(fp, "%d ", cha_signal[(trig_ptr+i)%BUF]); 
+		memcpy(&data[i], &cha_signal[(trig_ptr+i)%BUF], 16*sizeof(int);
+		
 	    }
-	    
-
+	    fprintf(fp, "%d ", data); 
 		
-		
+		       
+		       
+		       
 	    loop_t2=clock();
 	    loop_t = (long double)(loop_t2 - loop_t1);
 	    printf("Ellapsed time %ld clock cycles\n" ,loop_t);
