@@ -246,9 +246,9 @@ int main(void)
 	    for (i=0; i < N; i+=16)
 	    {
 		memcpy(&data[i], &cha_signal[(trig_ptr+i)%BUF], 16*sizeof(int));
-		
 	    }
-	    fprintf(fp, "%d ", &data); 
+		
+	    fprintf(fp, "%d ", data); 
 		
 		       
 		       
