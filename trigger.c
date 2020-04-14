@@ -219,7 +219,7 @@ int main(void)
 	    int ptr;
 	    for (i=0; i < N; i++)
 	    {
-		memcpy(&data[i], &cha_signal[(trig_ptr+i)%BUF], 16*sizeof(int);
+		//memcpy(&data[i], &cha_signal[(trig_ptr+i)%BUF], 16*sizeof(int);
 		fprintf(fp, "%d ", &cha_signal[(trig_ptr+i)%BUF]); 
 	    }
 	    
