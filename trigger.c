@@ -250,7 +250,7 @@ int main(void)
 	    
 	    for (i=0; i < N; i+=1)
 	    {
-		 fprintf(fp, "%d ", data[i]););
+		 fprintf(fp, "%d ", data[i]);
 	    }
 		
 		       
