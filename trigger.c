@@ -86,7 +86,7 @@ int main(void)
 	
 	
 	// define initial parameters for trigger signal
-	int trig_sig_freq=20;     // generation of a trigger signal
+	int trig_sig_freq=50;     // generation of a trigger signal
 	int trig_sig_amp=1;
 
 	/******************************/
