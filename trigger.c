@@ -216,11 +216,10 @@ int main(void)
 			
 	    /*now read N samples from the trigger pointer location.*/
 	    int i;
-	    int ptr;
 	    for (i=0; i < N; i++)
 	    {
 		//memcpy(&data[i], &cha_signal[(trig_ptr+i)%BUF], 16*sizeof(int);
-		fprintf(fp, "%d ", &cha_signal[(trig_ptr+i)%BUF]); 
+		fprintf(fp, "%d ", cha_signal[(trig_ptr+i)%BUF]); 
 	    }
 	    
 
