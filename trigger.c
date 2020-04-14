@@ -36,8 +36,8 @@ int unsigned led2=2;
 //Buffer depth 
 
 const int BUF = 16*1024;
-const int decimation = 8;    // decimation: [1;8;64;1024;8192;65536]
-const int N= 1562;			// desired length of trace (1,..., 16383) for 100us recording 
+const int decimation = 1;    // decimation: [1;8;64;1024;8192;65536]
+const int N= 12500;			// desired length of trace (1,..., 16383) for 100us recording 
 	// decimation: [1;8;64;1024;8192;65536]
 
 int main(void) 
@@ -86,7 +86,7 @@ int main(void)
 	
 	
 	// define initial parameters for trigger signal
-	int trig_sig_freq=10000;     // generation of a trigger signal
+	int trig_sig_freq=5000;     // generation of a trigger signal
 	int trig_sig_amp=1;
 
 	/******************************/
@@ -170,18 +170,11 @@ int main(void)
 	    for (i=0; i < N; i++)
 	    {
 		ptr = (trig_ptr+i)%BUF;
-
-		if (cha_signal[ptr]>=8192) // properly display negative values fix
-		{
-			//printf("%d ",cha_signal[ptr]-16384);
-			fprintf(fp, "%d ", cha_signal[ptr]-16384);
-		}
-		else
-		{
-			//printf("%d ",cha_signal[ptr]);
-			fprintf(fp, "%d ", cha_signal[ptr]);
-		}  
+		
+		fprintf(fp, "%d ", cha_signal[ptr]);
+ 
 	   }
+		
 	    
 		
 	    loop_t2=clock();
