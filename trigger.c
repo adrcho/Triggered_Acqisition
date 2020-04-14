@@ -247,8 +247,8 @@ int main(void)
 	    {
 		memcpy(&data[i], &cha_signal[(trig_ptr+i)%BUF], 16*sizeof(int));
 	    }
-		
-	    fprintf(fp, "%d ", data); 
+	printf("%p", data)
+	    //fprintf(fp, "%d ", data); 
 		
 		       
 		       
