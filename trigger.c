@@ -105,7 +105,7 @@ int main(void)
 	rp_DpinSetState(led0, RP_HIGH);
 	
 	// define initial parameters for test signal
-	int test_sig_freq=1000;     // generation of a trigger signal
+	int test_sig_freq=500;     // generation of a trigger signal
 	int test_sig_amp=0.5;
 	
 	/**********************************/
