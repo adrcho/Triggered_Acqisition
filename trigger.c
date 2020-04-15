@@ -263,7 +263,7 @@ int main(void)
 	
 	//  /*now read N samples from the trigger pointer location.*/
 	//  int i;
-	//  int data[N]={ };  // sure its an int?	       
+        int data[N]={ };  // sure its an int?	       
 	memcpy(&data, &cha_signal[(trig_ptr)%BUF], N*sizeof(int));  
 		       
 	    loop_t2=clock();
