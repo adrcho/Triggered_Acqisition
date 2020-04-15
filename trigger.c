@@ -37,7 +37,7 @@ int unsigned led2=2;
 
 const int BUF = 16*1024;
 const int decimation = 8;    // decimation: [1;8;64;1024;8192;65536]
-# define N 1562			// desired length of trace (1,..., 16383) for 100us recording 
+# define N 12500			// desired length of trace (1,..., 16383) for 100us recording 
 	// decimation: [1;8;64;1024;8192;65536]
 
 int main(void) 
@@ -243,9 +243,9 @@ int main(void)
 	    /*now read N samples from the trigger pointer location.*/
 	    int i;
 	    int data[N]={ };  // sure its an int?
-	    for (i=0; i < N; i++)
+	    for (i=0; i < N; i+=2)
 	    {
-		memcpy(&data[i], &cha_signal[(trig_ptr+i)%BUF], 1*sizeof(int));
+		memcpy(&data[i], &cha_signal[(trig_ptr+i)%BUF], 2*sizeof(int));
 	    }
 	    
 	    //for (i=0; i < N; i+=1)
