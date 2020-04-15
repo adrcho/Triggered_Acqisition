@@ -239,13 +239,13 @@ int main(void)
 	//----------------------------------------//
 	// same speed for writing in a file.
 			
-	    /*now read N samples from the trigger pointer location.*/
-	    int i;
-	    int data[N]={ };  // sure its an int?
-	    for (i=0; i < N; i++)
-	    {
-		memcpy(&data[i], &cha_signal[(trig_ptr+i)%BUF], 1*sizeof(int));
-	    }
+	 //  /*now read N samples from the trigger pointer location.*/
+	 //  int i;
+	//  int data[N]={ };  // sure its an int?
+	//   for (i=0; i < N; i++)
+	//  {
+	//	memcpy(&data[i], &cha_signal[(trig_ptr+i)%BUF], 1*sizeof(int));
+	  //  }
 	    
 	    //for (i=0; i < N; i+=1)
 	    //{
@@ -253,10 +253,18 @@ int main(void)
 	    //}
 		
 		
-		
+	//----------------------------------------//
+	//-----------No Data processing-----------//
+	//-------------Negative nalues------------//
+	//----------------------------------------//
+	//----------------------------------------//
+	//-------Full_values_collection-------//
+	//----------------------------------------//	
 	
-		       
-		       
+	//  /*now read N samples from the trigger pointer location.*/
+	//  int i;
+	//  int data[N]={ };  // sure its an int?	       
+	memcpy(&data, &cha_signal[(trig_ptr)%BUF], N*sizeof(int));  
 		       
 	    loop_t2=clock();
 	    loop_t = (long double)(loop_t2 - loop_t1);
