@@ -36,8 +36,8 @@ int unsigned led2=2;
 //Buffer depth 
 
 const int BUF = 16*1024;
-const int decimation = 1;    // decimation: [1;8;64;1024;8192;65536]
-# define N 12500			// desired length of trace (1,..., 16383) for 100us recording 
+const int decimation = 8;    // decimation: [1;8;64;1024;8192;65536]
+# define N 1562			// desired length of trace (1,..., 16383) for 100us recording 
 	// decimation: [1;8;64;1024;8192;65536]
 
 int main(void) 
