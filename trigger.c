@@ -43,7 +43,6 @@ const int decimation = 8;    // decimation: [1;8;64;1024;8192;65536]
 int main(void) 
 {
 	clock_t start_t, loop_t, loop_t1, loop_t2, end_t, total_t;
-	printf("%i ",N);
 	// initialization
 	int start = osc_fpga_init(); 
 	if(start) {
